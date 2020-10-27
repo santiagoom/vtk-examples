@@ -1,0 +1,34 @@
+$ sh walk.sh
+89M     ./tutorial/python-polydata/stl_mhd/Labels/labels.raw
+44M     ./tutorial/python-polydata/stl_mhd/mesh.stl
+30M     ./guide/docs/ITKExamples-5.2.0.pdf
+25M     ./guide/vtk-examples/src/VTKBookLaTeX/VTKTextBook.pdf
+2.0M    ./guide/vtk-examples/src/Artifacts/VTKExamplesStatus2017.odp
+1.5M    ./tutorial/vedo/docs/fenics_poster.pdf
+1.1M    ./tutorial/vedo/vedo/textures/earth2.jpg
+1.1M    ./guide/vtk-examples/src/Artifacts/VTKExamplesStatus2017.pdf
+944K    ./tutorial/vedo/vedo/fonts/Kanopus.npz
+928K    ./guide/vtk-examples/src/Artifacts/ToolkitsByExample.odp
+884K    ./tutorial/vedo/vedo/fonts/Kanopus.ttf
+840K    ./tutorial/vedo/vedo/fonts/LionelOfParis.npz
+776K    ./tutorial/vedo/vedo/fonts/Comae.npz
+664K    ./guide/vtk-examples/src/VTKBook/Figures/Figure12-5.png
+608K    ./tutorial/vedo/vedo/fonts/Theemim.npz
+600K    ./guide/vtk-examples/src/VTKBook/Figures/Figure7-26.png
+596K    ./tutorial/vedo/vedo/fonts/Glasgo.npz
+536K    ./guide/vtk-examples/src/VTKBook/Figures/Figure3-24.png
+480K    ./guide/vtk-examples/src/VTKBook/Figures/Figure3-17.png
+472K    ./guide/vtk-examples/src/Artifacts/OldVersusNew.odp
+file nums:
+8144
+8152
+9470
+149M    tutorial
+109M    guide
+8.0K    README.md
+5.0K    notebook
+0       walk.sh
+0       envs.py
+0       addIgnore.py
+340M    .
+
