@@ -1,3 +1,32 @@
+# addIgnore True
+# size_flag 0
+# threshold 2.0
+
+# .gitignore 
+# find . -name "*.py" -exec git add {} +
+# git add \*.py
+
+.DS_Store
+.idea/
+walk.sh
+addIgnore.py
+envs.py
+path.sh
+envs.sh
+pyutils
+gpu-config.txt
+
+data/
+log/
+cache/
+
+cmake-build-debug/
+cmake-build-release/
+
+
+
+
+
 # Prerequisites
 *.d
 
