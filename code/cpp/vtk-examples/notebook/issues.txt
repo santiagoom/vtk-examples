@@ -1,0 +1,10 @@
+
+
+https://stackoverflow.com/questions/18642155/no-override-found-for-vtkpolydatamapper
+
+
+You are missing include(${VTK_USE_FILE}) in your CMakeLists.txt file.
+
+
+
+
