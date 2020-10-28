@@ -17,14 +17,24 @@ VTKExamples/Cxx/GeometricObjects/CylinderExample
 Description
 This example creates a minimal visualization program, demonstrating VTK's basic rendering and pipeline creation.
 
+## Simple Operations
+
+_002_SimpleOperations
+
+DistanceBetweenPoints
+VTKExamples/Cxx/SimpleOperations/DistanceBetweenPoints
+
+Description
+This example finds the squared distance and the Euclidean distance between two 3D points.
+
+DistancePointToLine
+VTKExamples/Cxx/SimpleOperations/DistancePointToLine
+
+Description
+This example computes the distance from a point to a line.
 
 
-| Example Name                                                 | Classes Demonstrated                                         | Description                                                  | Image                                                        |
-| :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| [A hello world example](https://lorensen.github.io/VTKExamples/site/Cxx/GeometricObjects/CylinderExample)([python](https://lorensen.github.io/VTKExamples/site/Python/GeometricObjects/CylinderExample)) | [vtkPolyDataMapper](http://www.vtk.org/doc/nightly/html/classvtkPolyDataMapper.html#details) [vtkActor](http://www.vtk.org/doc/nightly/html/classvtkActor.html#details) [vtkRenderer](http://www.vtk.org/doc/nightly/html/classvtkRenderer.html#details) [vtkRenderWindow](http://www.vtk.org/doc/nightly/html/classvtkRenderWindow.html#details) [vtkRenderWindowInteractor](http://www.vtk.org/doc/nightly/html/classvtkRenderWindowInteractor.html#details) | Cylinder example from the VTK Textbook and source code. A hello world example. | [![img](http://tinyurl.com/y93vrd2c?raw=true)](https://github.com/lorensen/VTKExamples/blob/master/src/Testing/Baseline/Cxx/GeometricObjects/TestCylinderExample.png?raw=true target=) |
-|                                                              |                                                              |                                                              |                                                              |
 
-## Simple Operations[¶](https://lorensen.github.io/VTKExamples/site/Cxx/#simple-operations)
 
 | Example Name                                                 | Classes Demonstrated                                         | Description                                           | Image |
 | :----------------------------------------------------------- | :----------------------------------------------------------- | :---------------------------------------------------- | :---- |
