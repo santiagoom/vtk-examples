@@ -1,5 +1,6 @@
 import os
 import shutil
+import pyutils as u
 
 
 def cpp_toc():
@@ -125,7 +126,19 @@ def py_toc():
     pass
 
 
+def create_standard_CMakeLists():
+    vtk_examples_path = "D:\\gitrepoe\\vtk-examples\\code\\cpp\\vtk-examples"
+    cpp_examples_path = os.path.join(vtk_examples_path, "cpp-examples")
+    CMakeLists_src = os.path.join(vtk_examples_path, "CMakeLists.txt")
+    for root, dirs, files in os.walk(cpp_examples_path):
+        CMakeLists_dst = os.path.join(root, "CMakeLists.txt")
+        u.copy(CMakeLists_src, CMakeLists_dst)
+
+    pass
+
+
 if __name__ == "__main__":
     # cpp_toc()
-    py_toc()
+    # py_toc()
+    create_standard_CMakeLists()
     pass
