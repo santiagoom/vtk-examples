@@ -17,10 +17,12 @@
 #include <vtkImageHistogram.h>
 #include <vtkImageStencil.h>
 #include <vtkPointData.h>
+#include <qdebug.h>
 
 using namespace std;
 
 int main() {
+    auto start = std::chrono::high_resolution_clock::now();
     QString stlFileName = "./temp/mesh.stl";
     QString outputFileName = "./temp/mesh.mhd";
     int dim[3] = {512, 512, 280};
@@ -63,6 +65,8 @@ int main() {
     double outval = 0;
 
     vtkIdType cout = whiteImage->GetNumberOfPoints();
+//    cout << cout << endl;
+    qDebug() << cout;
     for (vtkIdType i = 0; i < cout; ++i) {
         whiteImage->GetPointData()->GetScalars()->SetTuple1(i, inval);
     }
@@ -86,5 +90,9 @@ int main() {
     mhdWriter->SetCompression(false);
     mhdWriter->Write();
 
+    auto stop = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count();
+//    cout<<duration<<endl;
+//    cout << "Time taken by function: "<< duration.count() << " microseconds" << endl;
     return 0;
 }

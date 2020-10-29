@@ -1,0 +1,56 @@
+# C++ Examples
+
+## Hello World
+_001_HelloWorld
+
+_001_GeometricObjects
+```
+CylinderExample
+VTKExamples/Cxx/GeometricObjects/CylinderExample
+
+Description
+This example creates a minimal visualization program, demonstrating VTK's basic rendering and pipeline creation.
+```
+
+## Simple Operations
+
+_002_SimpleOperations
+
+```
+DistanceBetweenPoints
+VTKExamples/Cxx/SimpleOperations/DistanceBetweenPoints
+
+Description
+This example finds the squared distance and the Euclidean distance between two 3D points.
+```
+
+```
+
+DistancePointToLine
+VTKExamples/Cxx/SimpleOperations/DistancePointToLine
+
+Description
+This example computes the distance from a point to a line.
+
+```
+```
+FloatingPointExceptions
+VTKExamples/Cxx/SimpleOperations/FloatingPointExceptions
+
+Description
+This example makes the illegal division by zero produce an error: Error: Floating point exception detected. Signal 8 rather than simply store "inf" in y.
+
+```
+
+_003_InputandOutput
+
+
+note found
+
+| [HierarchicalBoxPipeline](https://lorensen.github.io/VTKExamples/site/Cxx/CompositeData/HierarchicalBoxPipeline) | [vtkHierarchicalBoxDataSet](http://www.vtk.org/doc/nightly/html/classvtkHierarchicalBoxDataSet.html#details) | Demonstrates how hierarchical box (uniform rectilinear) AMR datasets can be processed using the new [vtkHierarchicalBoxDataSet](http://www.vtk.org/doc/nightly/html/classvtkHierarchicalBoxDataSet.html#details) class. |                                                              |
+| [OpenVRCone](https://lorensen.github.io/VTKExamples/site/Cxx/Visualization/OpenVRCone) |                                                              | VTK + OpenVR Cone rendering example.                         |                                                              |
+
+
+Deprecated
+| [VersionMacros](https://lorensen.github.io/VTKExamples/site/Cxx/Utilities/VersionMacros) | Macro/#define's                                              | Check VTK Version.                                           |                                                              |
+| [CheckVTKVersioninCMake](https://lorensen.github.io/VTKExamples/site/Cxx/Utilities/CMakeVTKVersionCheck) |                      |             |       |
