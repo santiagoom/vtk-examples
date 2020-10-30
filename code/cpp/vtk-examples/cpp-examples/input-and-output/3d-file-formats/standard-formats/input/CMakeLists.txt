@@ -16,7 +16,7 @@ foreach (SOURCE_FILE ${ALL_FILES})
     string(REPLACE ".cxx" "" TMP ${SOURCE_FILE})
     string(REPLACE ${CMAKE_CURRENT_SOURCE_DIR}/ "" EXAMPLE ${TMP})
     add_executable(${EXAMPLE} ${EXAMPLE}.cxx)
-    target_link_libraries(${EXAMPLE} ${VTK_LIBRARIES})
+    target_link_libraries(${EXAMPLE} ${VTK_LIBRARIES} ${EXTRA_LIBS})
 endforeach ()
 
 #file(GLOB ALL_FILES *.cpp)
@@ -27,7 +27,7 @@ endforeach ()
 #    target_link_libraries(${EXAMPLE} ${VTK_LIBRARIES})
 #endforeach ()
 
-set(TARGET_NAME AA)
+set(TARGET_NAME DEMReader)
 
 if (MSVC)
     add_custom_command(TARGET ${TARGET_NAME}
@@ -37,3 +37,6 @@ if (MSVC)
             $<TARGET_FILE_DIR:${TARGET_NAME}>
             )
 endif (MSVC)
+
+
+

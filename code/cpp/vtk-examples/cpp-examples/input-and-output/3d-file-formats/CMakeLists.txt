@@ -37,3 +37,6 @@ if (MSVC)
             $<TARGET_FILE_DIR:${TARGET_NAME}>
             )
 endif (MSVC)
+
+
+add_subdirectory(standard-formats/input)
