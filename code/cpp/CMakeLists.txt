@@ -16,4 +16,17 @@ list(APPEND EXTRA_LIBS cppUtils)
 #add_subdirectory(vtk-examples/cpp-examples/hello-world)
 #add_subdirectory(vtk-examples/cpp-examples/simple-operations)
 add_subdirectory(vtk-examples/cpp-examples/input-and-output/3d-file-formats)
+add_subdirectory(vtk-examples/cpp-examples/geometric-objects)
+add_subdirectory(vtk-examples/cpp-examples/visualization)
+
+add_subdirectory(vtk-examples/cpp-examples/working-with-3d-data/medical)
+add_subdirectory(vtk-examples/cpp-examples/working-with-3d-data/working-with-structured-3d-data/vtkstructuredgrid)
+
+
+
+
+
+
+
+
 

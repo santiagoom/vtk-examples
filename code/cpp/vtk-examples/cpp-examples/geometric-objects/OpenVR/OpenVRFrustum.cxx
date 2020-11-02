@@ -8,9 +8,9 @@
 #include <vtkPolyData.h>
 #include <vtkPolyDataMapper.h>
 #include <vtkProperty.h>
-#include <vtkOpenVRRenderWindow.h>
-#include <vtkOpenVRRenderer.h>
-#include <vtkOpenVRRenderWindowInteractor.h>
+//#include <vtkOpenVRRenderWindow.h>
+//#include <vtkOpenVRRenderer.h>
+//#include <vtkOpenVRRenderWindowInteractor.h>
 #include <vtkShrinkPolyData.h>
 
 int main(int, char *[])

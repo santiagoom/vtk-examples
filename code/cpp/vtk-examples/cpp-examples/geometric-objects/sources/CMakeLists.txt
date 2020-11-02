@@ -27,7 +27,7 @@ endforeach ()
 #    target_link_libraries(${EXAMPLE} ${VTK_LIBRARIES})
 #endforeach ()
 
-set(TARGET_NAME AA)
+set(TARGET_NAME Arrow)
 
 if (MSVC)
     add_custom_command(TARGET ${TARGET_NAME}
@@ -37,3 +37,4 @@ if (MSVC)
             $<TARGET_FILE_DIR:${TARGET_NAME}>
             )
 endif (MSVC)
+

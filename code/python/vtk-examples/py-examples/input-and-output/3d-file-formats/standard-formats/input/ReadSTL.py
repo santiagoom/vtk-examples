@@ -17,7 +17,8 @@ def get_program_parameters():
 def main():
     colors = vtk.vtkNamedColors()
 
-    filename = get_program_parameters()
+    # filename = get_program_parameters()
+    filename = "E:\\data\\medicaldata\\vtk\\vtp\\mesh.stl"
 
     reader = vtk.vtkSTLReader()
     reader.SetFileName(filename)

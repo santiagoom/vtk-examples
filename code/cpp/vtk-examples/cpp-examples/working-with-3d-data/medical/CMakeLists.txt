@@ -27,7 +27,7 @@ endforeach ()
 #    target_link_libraries(${EXAMPLE} ${VTK_LIBRARIES})
 #endforeach ()
 
-set(TARGET_NAME AA)
+set(TARGET_NAME MedicalDemo1)
 
 if (MSVC)
     add_custom_command(TARGET ${TARGET_NAME}

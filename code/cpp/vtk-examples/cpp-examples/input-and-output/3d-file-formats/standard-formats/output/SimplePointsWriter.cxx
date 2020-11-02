@@ -8,7 +8,8 @@ int main(int vtkNotUsed(argc), char* vtkNotUsed(argv)[])
   sphereSource->Update();
 
   vtkNew<vtkSimplePointsWriter> writer;
-  writer->SetFileName("test.xyz");
+  writer->SetFileName("SimplePointsWriter_test.xyz");
+//  writer->SetInputConnection(sphereSource->GetOutputPort());
   writer->SetInputConnection(sphereSource->GetOutputPort());
   writer->Write();
 

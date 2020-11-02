@@ -13,55 +13,57 @@
 #include <vtkRenderWindow.h>
 #include <vtkRenderWindowInteractor.h>
 #include <vtkRenderer.h>
+#include <myutils.h>
 
 // needed to easily convert int to std::string
-int main(int argc, char* argv[])
-{
-  vtkNew<vtkNamedColors> colors;
+int main(int argc, char *argv[]) {
+    vtkNew<vtkNamedColors> colors;
 
-  // Verify input arguments
-  if (argc != 2)
-  {
-    std::cout << "Usage: " << argv[0] << " Filename(.raw) e.g. Particles.raw"
-              << std::endl;
-    return EXIT_FAILURE;
-  }
+//    // Verify input arguments
+//    if (argc != 2) {
+//        std::cout << "Usage: " << argv[0] << " Filename(.raw) e.g. Particles.raw"
+//                  << std::endl;
+//        return EXIT_FAILURE;
+//    }
 
-  std::string filePath = argv[1];
-  // Particles.raw supplied by VTK is big endian encoded
-  // std::string filePath = "C:\\VTK\\vtkdata-5.8.0\\Data\\Particles.raw";
-  // Read the file
-  vtkNew<vtkParticleReader> reader;
+    string filename1 = DATAPATH + "Particles.raw";
 
-  reader->SetFileName(filePath.c_str());
-  // if nothing gets displayed or totally wrong, swap the endianness
-  reader->SetDataByteOrderToBigEndian();
-  reader->Update();
+//  std::string filePath = argv[1];
+    std::string filePath = filename1;
+    // Particles.raw supplied by VTK is big endian encoded
+    // std::string filePath = "C:\\VTK\\vtkdata-5.8.0\\Data\\Particles.raw";
+    // Read the file
+    vtkNew<vtkParticleReader> reader;
 
-  // Visualize
-  vtkNew<vtkPolyDataMapper> mapper;
-  mapper->SetInputConnection(reader->GetOutputPort());
-  std::cout << "number of pieces: " << mapper->GetNumberOfPieces() << std::endl;
-  mapper->SetScalarRange(4, 9);
+    reader->SetFileName(filePath.c_str());
+    // if nothing gets displayed or totally wrong, swap the endianness
+    reader->SetDataByteOrderToBigEndian();
+    reader->Update();
 
-  vtkNew<vtkActor> actor;
+    // Visualize
+    vtkNew<vtkPolyDataMapper> mapper;
+    mapper->SetInputConnection(reader->GetOutputPort());
+    std::cout << "number of pieces: " << mapper->GetNumberOfPieces() << std::endl;
+    mapper->SetScalarRange(4, 9);
 
-  actor->SetMapper(mapper);
-  actor->GetProperty()->SetPointSize(4);
+    vtkNew<vtkActor> actor;
 
-  vtkNew<vtkRenderer> renderer;
-  vtkNew<vtkRenderWindow> renderWindow;
-  renderWindow->AddRenderer(renderer);
-  renderWindow->SetWindowName("ParticleReader");
+    actor->SetMapper(mapper);
+    actor->GetProperty()->SetPointSize(4);
 
-  vtkNew<vtkRenderWindowInteractor> renderWindowInteractor;
-  renderWindowInteractor->SetRenderWindow(renderWindow);
+    vtkNew<vtkRenderer> renderer;
+    vtkNew<vtkRenderWindow> renderWindow;
+    renderWindow->AddRenderer(renderer);
+    renderWindow->SetWindowName("ParticleReader");
 
-  renderer->AddActor(actor);
-  renderer->SetBackground(colors->GetColor3d("DarkSlateGray").GetData());
+    vtkNew<vtkRenderWindowInteractor> renderWindowInteractor;
+    renderWindowInteractor->SetRenderWindow(renderWindow);
 
-  renderWindow->Render();
-  renderWindowInteractor->Start();
+    renderer->AddActor(actor);
+    renderer->SetBackground(colors->GetColor3d("DarkSlateGray").GetData());
 
-  return EXIT_SUCCESS;
+    renderWindow->Render();
+    renderWindowInteractor->Start();
+
+    return EXIT_SUCCESS;
 }

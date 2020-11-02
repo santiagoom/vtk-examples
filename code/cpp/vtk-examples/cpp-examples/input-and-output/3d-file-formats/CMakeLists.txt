@@ -39,4 +39,5 @@ if (MSVC)
 endif (MSVC)
 
 
-add_subdirectory(standard-formats/input)
+add_subdirectory(standard-formats/output)
+add_subdirectory(vtk-formats/output_1)
