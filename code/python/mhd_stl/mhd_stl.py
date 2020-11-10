@@ -3,49 +3,45 @@ import time
 
 
 def mhd2stl():
+    # QString imageName = "E:\\data\\medicaldata\\esdata\\tianming\\";
+    # QString fileName = "CTA20170410_LIUSHIFANG_4.stl";
+    # int value = 4;
+    # vtkSmartPointer<vtkMetaImageReader> reader = vtkSmartPointer<vtkMetaImageReader>::New();
+    # reader->SetFileName(imageName.toStdString().c_str());
+    # reader->Update();
+    #
+    # vtkSmartPointer<vtkMarchingCubes> surface = vtkSmartPointer<vtkMarchingCubes>::New();
+    # surface->SetInputConnection(reader->GetOutputPort());
+    # surface->ComputeNormalsOn();
+    # surface->SetValue(0, value);
+    # surface->Update();
+    #
+    # vtkSmartPointer<vtkSTLWriter> stlWriter = vtkSmartPointer<vtkSTLWriter>::New();
+    # stlWriter->SetFileName(fileName.toStdString().c_str());
+    # stlWriter->SetInputConnection(surface->GetOutputPort());
+    # stlWriter->Write();
+    # return 0;
+
+    imageName = "E:\\data\\medicaldata\\esdata\\tianming\\CTA20140805_LINSHUWEN_labelmap.mhd"
+    fileName = "E:\\data\\medicaldata\\esdata\\tianming\\CTA20140805_LINSHUWEN_labelmap_4.stl"
+    value = 4
+    reader = vtk.vtkMetaImageReader()
+    reader.SetFileName(imageName)
+    reader.Update()
+
+    surface = vtk.vtkMarchingCubes()
+    surface.SetInputConnection(reader.GetOutputPort())
+    surface.ComputeNormalsOn()
+    surface.SetValue(0, value)
+    surface.Update()
+
+    stlWriter = vtk.vtkSTLWriter()
+    stlWriter.SetFileName(fileName)
+    stlWriter.SetInputConnection(surface.GetOutputPort())
+    stlWriter.Write()
     pass
 
 
-# vtkSmartPointer<vtkMetaImageWriter> mhdWriter = vtkSmartPointer<vtkMetaImageWriter>::New();
-# vtkSmartPointer<vtkSTLReader> stlReader = vtkSmartPointer<vtkSTLReader>::New();
-#
-# stlReader->SetFileName(stlFileName.toStdString().c_str());
-# stlReader->Update();
-#
-# vtkSmartPointer<vtkPolyData> inputImage = vtkSmartPointer<vtkPolyData>::New();
-# inputImage = stlReader->GetOutput();
-#
-# vtkSmartPointer<vtkXMLPolyDataWriter> polyDataWriter = vtkSmartPointer<vtkXMLPolyDataWriter>::New();
-# polyDataWriter->SetInputConnection(stlReader->GetOutputPort());
-# polyDataWriter->SetFileName("MyImage.vtp");
-# polyDataWriter->SetCompressorTypeToNone();
-# polyDataWriter->SetDataModeToAscii();
-# polyDataWriter->Write();
-
-# vtkSmartPointer<vtkImageData> whiteImage = vtkSmartPointer<vtkImageData>::New();
-# double bounds[6];
-# inputImage->GetBounds(bounds);
-#
-# whiteImage->SetSpacing(spacing);
-#
-# for (int i = 0; i < 3; ++i) {
-#     if (dim[i] < 1) {
-#         dim[i] = 1;
-#     }
-# }
-#
-# whiteImage->SetDimensions(dim);
-# whiteImage->SetExtent(0, dim[0] - 1, 0, dim[1] - 1, 0, dim[2] - 1);
-# whiteImage->SetOrigin(origin);
-# whiteImage->AllocateScalars(VTK_FLOAT, 1);
-#
-# double inval = 255;
-# double outval = 0;
-#
-# vtkIdType cout = whiteImage->GetNumberOfPoints();
-# for (vtkIdType i = 0; i < cout; ++i) {
-#     whiteImage->GetPointData()->GetScalars()->SetTuple1(i, inval);
-# }
 def poly2vol(stlFileName, mhdFileName, dim, spacing, origin):
     tic = time.time()
     mhdWriter = vtk.vtkMetaImageWriter()
@@ -95,12 +91,16 @@ def poly2vol(stlFileName, mhdFileName, dim, spacing, origin):
 
 
 def run():
-    stlFileName = "mesh.stl"
-    mhdFileName = "mesh.mhd"
+    # poly2vol
+    stlFileName = "E:\\data\\medicaldata\\other\\yli\\TM_DXL\\TM_DXL\\step3\\mesh.stl"
+    mhdFileName = "E:\\data\\medicaldata\\other\\yli\\TM_DXL\\TM_DXL\\step3\\mesh.mhd"
     dim = [512, 512, 347]
     spacing = [0.363281, 0.363281, 0.363281]
     origin = [-55.8184, -269.818, 1669]
     poly2vol(stlFileName, mhdFileName, dim, spacing, origin)
+
+    # mhd2stl
+    mhd2stl()
     pass
 
 

@@ -7,9 +7,10 @@
 using namespace std;
 
 int main() {
-    QString imageName = "./temp/CTA20170410_LIUSHIFANG_labelmap.mhd";
-    QString fileName = "./temp/CTA20170410_LIUSHIFANG_6.stl";
-    int value = 6;
+//    QString imageName = "./temp/CTA20170410_LIUSHIFANG_labelmap.mhd";
+    QString imageName = "E:\\data\\medicaldata\\esdata\\tianming\\";
+    QString fileName = "CTA20170410_LIUSHIFANG_4.stl";
+    int value = 4;
     vtkSmartPointer<vtkMetaImageReader> reader = vtkSmartPointer<vtkMetaImageReader>::New();
     reader->SetFileName(imageName.toStdString().c_str());
     reader->Update();
@@ -17,7 +18,7 @@ int main() {
     vtkSmartPointer<vtkMarchingCubes> surface = vtkSmartPointer<vtkMarchingCubes>::New();
     surface->SetInputConnection(reader->GetOutputPort());
     surface->ComputeNormalsOn();
-    surface->SetValue(5, value);
+    surface->SetValue(0, value);
     surface->Update();
 
     vtkSmartPointer<vtkSTLWriter> stlWriter = vtkSmartPointer<vtkSTLWriter>::New();
