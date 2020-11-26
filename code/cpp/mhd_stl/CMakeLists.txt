@@ -17,7 +17,7 @@ add_executable(mhd2stl mhd2stl.cpp)
 target_link_libraries(mhd2stl ${VTK_LIBRARIES})
 
 add_executable(poly2vol poly2vol.cpp)
-target_link_libraries(poly2vol ${VTK_LIBRARIES})
+target_link_libraries(poly2vol ${cppUtils_LIBS})
 
 add_executable(parse_mhd parse_mhd.cpp)
 target_link_libraries(parse_mhd ${VTK_LIBRARIES} ${cppUtils_LIBS})
@@ -43,4 +43,3 @@ endif (MSVC)
 #endforeach()
 #message(STATUS "print_all_variables------------------------------------------}")
 #
-

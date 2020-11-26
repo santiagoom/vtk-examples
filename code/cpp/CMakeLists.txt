@@ -18,16 +18,11 @@ add_subdirectory(mhd_stl)
 #add_subdirectory(vtk-examples/cpp-examples/input-and-output/3d-file-formats)
 #add_subdirectory(vtk-examples/cpp-examples/geometric-objects)
 #add_subdirectory(vtk-examples/cpp-examples/visualization)
+#add_subdirectory(vtk-examples/cpp-examples/texture-mapping)
 #
 #add_subdirectory(vtk-examples/cpp-examples/working-with-3d-data/medical)
 #add_subdirectory(vtk-examples/cpp-examples/working-with-3d-data/working-with-structured-3d-data/vtkstructuredgrid/)
 #add_subdirectory(vtk-examples/cpp-examples/working-with-3d-data/working-with-structured-3d-data/vtkstructuredpoints/)
 #add_subdirectory(vtk-examples/cpp-examples/working-with-3d-data/working-with-structured-3d-data/vtkrectilineargrid/)
 #add_subdirectory(vtk-examples/cpp-examples/working-with-3d-data/working-with-unstructured-3d-data/vtkunstructuredgrid)
-
-
-
-
-
-
 

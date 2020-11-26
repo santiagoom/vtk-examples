@@ -18,17 +18,31 @@
 #include <vtkImageStencil.h>
 #include <vtkPointData.h>
 #include <chrono>
+#include <vtkUtils.h>
 
 using namespace std;
 using namespace std::chrono;
 
 int main() {
     auto start = high_resolution_clock::now();
-    QString stlFileName = "./temp/mesh.stl";
-    QString outputFileName = "./temp/mesh1.mhd";
+//    QString stlFileName = "E:\\data\\medicaldata\\other\\yli\\TM_DXL_CTA20140728_DENGXILIAN\\TM_DXL\\step3\\mesh.stl";
+//    QString outputFileName = "E:\\data\\medicaldata\\other\\yli\\TM_DXL_CTA20140728_DENGXILIAN\\TM_DXL\\step3\\mesh.mhd";
+    QString stlFileName = "E:\\data\\medicaldata\\other\\yli\\tianming\\_CM_001.stl";
+    QString outputFileName = "E:\\data\\medicaldata\\other\\yli\\tianming\\_CM_001.mhd";
+    QString outputFileName1 = "E:\\data\\medicaldata\\other\\yli\\tianming\\_CM_001_1.mhd";
+//    int dim[3] = {512, 512, 345};
+//    double spacing[3] = {0.371, 0.371, 0.371};
+//    double origin[3] = {-60.4394, -94.8145, 1816.75};
+//    int dim[3] = {512, 512, 280};
+//    double spacing[3] = {0.376, 0.376, 0.5};
+//    double origin[3] = {-76.6870, -96.0620, 1814.25};
     int dim[3] = {512, 512, 280};
-    double spacing[3] = {0.398438, 0.398438, 0.398438};
-    double origin[3] = {-59.8008, -275.301, 968};
+    double spacing[3] = {0.376, 0.376, 0.5};
+    double origin[3] = {-76.6870, -96.0620, 1814.25};
+
+    poly2vol(stlFileName, outputFileName1, dim, origin, spacing);
+
+
     vtkSmartPointer<vtkMetaImageWriter> mhdWriter = vtkSmartPointer<vtkMetaImageWriter>::New();
     vtkSmartPointer<vtkSTLReader> stlReader = vtkSmartPointer<vtkSTLReader>::New();
 
@@ -38,12 +52,12 @@ int main() {
     vtkSmartPointer<vtkPolyData> inputImage = vtkSmartPointer<vtkPolyData>::New();
     inputImage = stlReader->GetOutput();
 
-    vtkSmartPointer<vtkXMLPolyDataWriter> polyDataWriter = vtkSmartPointer<vtkXMLPolyDataWriter>::New();
-    polyDataWriter->SetInputConnection(stlReader->GetOutputPort());
-    polyDataWriter->SetFileName("MyImage.vtp");
-    polyDataWriter->SetCompressorTypeToNone();
-    polyDataWriter->SetDataModeToAscii();
-    polyDataWriter->Write();
+//    vtkSmartPointer<vtkXMLPolyDataWriter> polyDataWriter = vtkSmartPointer<vtkXMLPolyDataWriter>::New();
+//    polyDataWriter->SetInputConnection(stlReader->GetOutputPort());
+//    polyDataWriter->SetFileName("MyImage.vtp");
+//    polyDataWriter->SetCompressorTypeToNone();
+//    polyDataWriter->SetDataModeToAscii();
+//    polyDataWriter->Write();
 
     vtkSmartPointer<vtkImageData> whiteImage = vtkSmartPointer<vtkImageData>::New();
     double bounds[6];

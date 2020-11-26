@@ -100,7 +100,7 @@ def run():
     poly2vol(stlFileName, mhdFileName, dim, spacing, origin)
 
     # mhd2stl
-    mhd2stl()
+    # mhd2stl()
     pass
 
 
