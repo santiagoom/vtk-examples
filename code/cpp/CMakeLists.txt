@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD 14)
 #add_subdirectory(cppUtils)
 #list(APPEND EXTRA_LIBS cppUtils)
 
-add_subdirectory(mhd_stl)
+#add_subdirectory(mhd_stl)
 
 #add_subdirectory(vtk-examples/practice/_001_HelloWorld/GeometricObjects)
 #add_subdirectory(vtk-examples/practice/_002_SimpleOperations/SimpleOperations)
@@ -20,9 +20,8 @@ add_subdirectory(mhd_stl)
 #add_subdirectory(vtk-examples/cpp-examples/visualization)
 #add_subdirectory(vtk-examples/cpp-examples/texture-mapping)
 #
-#add_subdirectory(vtk-examples/cpp-examples/working-with-3d-data/medical)
+add_subdirectory(vtk-examples/cpp-examples/working-with-3d-data/medical)
 #add_subdirectory(vtk-examples/cpp-examples/working-with-3d-data/working-with-structured-3d-data/vtkstructuredgrid/)
 #add_subdirectory(vtk-examples/cpp-examples/working-with-3d-data/working-with-structured-3d-data/vtkstructuredpoints/)
 #add_subdirectory(vtk-examples/cpp-examples/working-with-3d-data/working-with-structured-3d-data/vtkrectilineargrid/)
 #add_subdirectory(vtk-examples/cpp-examples/working-with-3d-data/working-with-unstructured-3d-data/vtkunstructuredgrid)
-

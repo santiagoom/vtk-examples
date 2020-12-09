@@ -14,3 +14,26 @@ Sometimes it is helpful to view the results of a segmentation without any post p
 
 !!! note
     This original source code for this example is [here](https://gitlab.kitware.com/vtk/vtk/blob/395857190c8453508d283958383bc38c9c2999bf/Examples/Medical/Cxx/GenerateCubesFromLabels.cxx).
+
+
+
+frogtissue.mhd
+
+```
+ObjectType = Image
+NDims = 3
+BinaryData = True
+BinaryDataByteOrderMSB = False
+CompressedData = True
+CompressedDataSize = 260020
+TransformMatrix = 1 0 0 0 1 0 0 0 1
+Offset = 0 0 0
+CenterOfRotation = 0 0 0
+ElementSpacing = 1 1 1.5
+DimSize = 500 470 136
+AnatomicalOrientation = ???
+ElementType = MET_UCHAR
+ElementDataFile = frogtissue.zraw
+
+```
+
