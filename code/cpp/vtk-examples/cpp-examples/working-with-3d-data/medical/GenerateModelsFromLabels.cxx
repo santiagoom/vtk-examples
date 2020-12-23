@@ -119,7 +119,8 @@ int main(int argc, char *argv[]) {
 
         // output the polydata
         std::stringstream ss;
-        ss << filePrefix << i << ".vtp";
+//        ss << filePrefix << i << ".vtp";
+        ss << filePrefix << i << ".stl";
         std::cout << argv[0] << " writing " << ss.str() << std::endl;
 
         writer->SetFileName(ss.str().c_str());

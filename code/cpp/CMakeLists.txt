@@ -25,3 +25,7 @@ add_subdirectory(vtk-examples/cpp-examples/working-with-3d-data/medical)
 #add_subdirectory(vtk-examples/cpp-examples/working-with-3d-data/working-with-structured-3d-data/vtkstructuredpoints/)
 #add_subdirectory(vtk-examples/cpp-examples/working-with-3d-data/working-with-structured-3d-data/vtkrectilineargrid/)
 #add_subdirectory(vtk-examples/cpp-examples/working-with-3d-data/working-with-unstructured-3d-data/vtkunstructuredgrid)
+
+#add_subdirectory(vtk-examples/cpp-examples/qt)
+
+
