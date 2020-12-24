@@ -60,6 +60,11 @@ int main() {
     vtkActor *coneActor = vtkActor::New();
     coneActor->SetMapper(coneMapper);
 
+    vtkActor *coneActor1 = vtkActor::New();
+    coneActor1->SetMapper(coneMapper);
+    coneActor1->SetPosition(0, 2, 0);
+
+
     //
     // Create the Renderer and assign actors to it. A renderer is like a
     // viewport. It is part or all of a window on the screen and it is
@@ -68,6 +73,7 @@ int main() {
     //
     vtkRenderer *ren1 = vtkRenderer::New();
     ren1->AddActor(coneActor);
+    ren1->AddActor(coneActor1);
     ren1->SetBackground(0.1, 0.2, 0.4);
 
     //

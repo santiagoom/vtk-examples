@@ -28,4 +28,5 @@ add_subdirectory(vtk-examples/cpp-examples/working-with-3d-data/medical)
 
 #add_subdirectory(vtk-examples/cpp-examples/qt)
 
-
+#D:\gitrepoe\vtk-examples\code\cpp\vtk-examples\cpp-examples\input-and-output\3d-file-formats\standard-formats\input
+#add_subdirectory(vtk-examples/cpp-examples/input-and-output/graph-formats/3d-file-format/s)
