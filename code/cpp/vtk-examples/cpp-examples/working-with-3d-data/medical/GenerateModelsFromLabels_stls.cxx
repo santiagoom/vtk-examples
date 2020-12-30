@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {
 
     QString segment_type = "heart";
 
-    QString stl_path = QString("%1\\%2\\%3\\").arg(parent_path).arg("stl").arg(casename);
+    QString stl_path = QString("%1\\%2\\%3\\").arg(parent_path).arg("stl_s").arg(casename);
 
     QDir stl_dir = QDir(stl_path);
     if (!stl_dir.exists()) {

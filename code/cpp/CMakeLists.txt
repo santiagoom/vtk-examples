@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD 14)
 #add_subdirectory(cppUtils)
 #list(APPEND EXTRA_LIBS cppUtils)
 
-#add_subdirectory(mhd_stl)
+add_subdirectory(mhd_stl)
 
 #add_subdirectory(vtk-examples/practice/_001_HelloWorld/GeometricObjects)
 #add_subdirectory(vtk-examples/practice/_002_SimpleOperations/SimpleOperations)
@@ -20,7 +20,7 @@ set(CMAKE_CXX_STANDARD 14)
 #add_subdirectory(vtk-examples/cpp-examples/visualization)
 #add_subdirectory(vtk-examples/cpp-examples/texture-mapping)
 #
-add_subdirectory(vtk-examples/cpp-examples/working-with-3d-data/medical)
+#add_subdirectory(vtk-examples/cpp-examples/working-with-3d-data/medical)
 #add_subdirectory(vtk-examples/cpp-examples/working-with-3d-data/working-with-structured-3d-data/vtkstructuredgrid/)
 #add_subdirectory(vtk-examples/cpp-examples/working-with-3d-data/working-with-structured-3d-data/vtkstructuredpoints/)
 #add_subdirectory(vtk-examples/cpp-examples/working-with-3d-data/working-with-structured-3d-data/vtkrectilineargrid/)
@@ -30,3 +30,4 @@ add_subdirectory(vtk-examples/cpp-examples/working-with-3d-data/medical)
 
 #D:\gitrepoe\vtk-examples\code\cpp\vtk-examples\cpp-examples\input-and-output\3d-file-formats\standard-formats\input
 #add_subdirectory(vtk-examples/cpp-examples/input-and-output/graph-formats/3d-file-format/s)
+
