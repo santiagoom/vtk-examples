@@ -1,5 +1,41 @@
 import vtk
 import time
+import numpy as np
+import SimpleITK as sitk
+import os
+
+
+def getMhdMeta(mhd_info_path, keys):
+    with open(mhd_info_path, mode="r") as f:
+        lines = f.readlines()
+
+    infos = dict()
+    for line in lines:
+        parts = line.split()
+        if parts[0] == "Offset":
+            Offsets = []
+            Offsets.append(parts[2])
+            Offsets.append(parts[3])
+            Offsets.append(parts[4])
+            infos["Offset"] = Offsets
+            pass
+        if parts[0] == "ElementSpacing":
+            Spacinges = []
+            Spacinges.append(parts[2])
+            Spacinges.append(parts[3])
+            Spacinges.append(parts[4])
+            infos["ElementSpacing"] = Spacinges
+        if parts[0] == "DimSize":
+            Dims = []
+            Dims.append(parts[2])
+            Dims.append(parts[3])
+            Dims.append(parts[4])
+            infos["DimSize"] = Dims
+
+    results = dict()
+    for key in keys:
+        results[key] = infos[key]
+    return results
 
 
 def mhd2stl():
@@ -22,9 +58,9 @@ def mhd2stl():
     # stlWriter->Write();
     # return 0;
 
-    imageName = "E:\\data\\medicaldata\\esdata\\tianming\\CTA20140805_LINSHUWEN_labelmap.mhd"
-    fileName = "E:\\data\\medicaldata\\esdata\\tianming\\CTA20140805_LINSHUWEN_labelmap_4.stl"
-    value = 4
+    imageName = "F:\\data\\esdata\\yanli\\LIU YONG QIONG_tm\\LIU YONG QIONG_tm\\LIU YONG QIONG\\LIU YONG QIONG\\LH_10_grayvalues_from_txt.mhd"
+    fileName = "F:\\data\\esdata\\yanli\\LIU YONG QIONG_tm\\LIU YONG QIONG_tm\\LIU YONG QIONG\\LIU YONG QIONG\\LH_10_grayvalues_from_txt.stl"
+    value = 255
     reader = vtk.vtkMetaImageReader()
     reader.SetFileName(imageName)
     reader.Update()
@@ -60,7 +96,7 @@ def poly2vol(stlFileName, mhdFileName, dim, spacing, origin):
     whiteImage.SetOrigin(origin)
     whiteImage.AllocateScalars(10, 1)
 
-    inval = 255.0
+    inval = 1.0
     outval = 0.0
     cout = whiteImage.GetNumberOfPoints()
     for i in range(cout):
@@ -90,17 +126,79 @@ def poly2vol(stlFileName, mhdFileName, dim, spacing, origin):
     pass
 
 
+def mask2vol():
+    tic = time.time()
+
+    filename = "LH_10_grayvalues"
+    mask_path = "F:\\data\\esdata\\yanli\\LIU YONG QIONG_tm\\LIU YONG QIONG_tm\\LIU YONG QIONG\\LIU YONG QIONG\\{}.txt".format(filename)
+    output_path = "F:\\data\\esdata\\yanli\\LIU YONG QIONG_tm\\LIU YONG QIONG_tm\\LIU YONG QIONG\\LIU YONG QIONG\\"
+    mhd_info_path = "F:\\data\\esdata\\yanli\\LIU YONG QIONG_tm\\LIU YONG QIONG_tm\\LIU YONG QIONG\\LIU YONG QIONG\\origin.mhd"
+    keys = ["Offset", "ElementSpacing", "DimSize"]
+    mhd_infos = getMhdMeta(mhd_info_path, keys)
+
+    Offset = np.array([mhd_infos["Offset"][0], mhd_infos["Offset"][1], mhd_infos["Offset"][2]],
+                      dtype=np.float32).tolist()
+    ElementSpacing = np.array(
+        [mhd_infos["ElementSpacing"][0], mhd_infos["ElementSpacing"][1], mhd_infos["ElementSpacing"][2]],
+        dtype=np.float32).tolist()
+    Dims = np.array(
+        [mhd_infos["DimSize"][2], mhd_infos["DimSize"][0], mhd_infos["DimSize"][1]],
+        dtype=np.int)
+
+    arrays = np.zeros(Dims, dtype=np.float32)
+
+    with open(mask_path, mode="r") as f:
+        lines = f.readlines()
+
+    for i, line in enumerate(lines[:]):
+        parts = line.strip().split()
+        x = float(parts[0][:-1])
+        y = float(parts[1][:-1])
+        z = float(parts[2][:-1])
+
+        pos_x = round((x - Offset[0]) / ElementSpacing[0])
+        pos_y = round((y - Offset[1]) / ElementSpacing[1])
+        pos_z = round((z - Offset[2]) / ElementSpacing[2])
+
+        arrays[pos_z, pos_y, pos_x] = 1
+
+    volume = sitk.GetImageFromArray(arrays)
+    volume.SetOrigin(Offset)
+    volume.SetSpacing(ElementSpacing)
+    sitk.WriteImage(volume, "{}/{}_from_txt.mhd".format(output_path, filename))
+    toc = time.time()
+    intervial = toc - tic
+
+    print("time cost: {:.2f}".format(intervial))
+
+    pass
+
+
 def run():
     # poly2vol
-    stlFileName = "E:\\data\\medicaldata\\other\\yli\\TM_DXL\\TM_DXL\\step3\\mesh.stl"
-    mhdFileName = "E:\\data\\medicaldata\\other\\yli\\TM_DXL\\TM_DXL\\step3\\mesh.mhd"
-    dim = [512, 512, 347]
-    spacing = [0.363281, 0.363281, 0.363281]
-    origin = [-55.8184, -269.818, 1669]
-    poly2vol(stlFileName, mhdFileName, dim, spacing, origin)
+    stlFileName = "F:\\data\\esdata\\yanli\\LIU YONG QIONG_tm\\LIU YONG QIONG_tm\\LIU YONG QIONG\\LIU YONG QIONG\\_LH_10_001.stl"
+    mhdFileName = "F:\\data\\esdata\\yanli\\LIU YONG QIONG_tm\\LIU YONG QIONG_tm\\LIU YONG QIONG\\LIU YONG QIONG\\_LH_10_001.mhd"
+    mhd_info_path = "F:\\data\\esdata\\yanli\\LIU YONG QIONG_tm\\LIU YONG QIONG_tm\\LIU YONG QIONG\\LIU YONG QIONG\\origin.mhd"
+    keys = ["Offset", "ElementSpacing", "DimSize"]
+    mhd_infos = getMhdMeta(mhd_info_path, keys)
+
+    Offset = np.array([mhd_infos["Offset"][0], mhd_infos["Offset"][1], mhd_infos["Offset"][2]],
+                      dtype=np.float32).tolist()
+    ElementSpacing = np.array(
+        [mhd_infos["ElementSpacing"][0], mhd_infos["ElementSpacing"][1], mhd_infos["ElementSpacing"][2]],
+        dtype=np.float32).tolist()
+    Dims = np.array(
+        [mhd_infos["DimSize"][0], mhd_infos["DimSize"][1], mhd_infos["DimSize"][2]],
+        dtype=np.int).tolist()
+
+    # poly2vol(stlFileName, mhdFileName, Dims, ElementSpacing, Offset)
 
     # mhd2stl
-    # mhd2stl()
+    mhd2stl()
+
+    # mask2vol
+    # mask2vol()
+
     pass
 
 
