@@ -39,7 +39,7 @@ def getMhdMeta(mhd_info_path, keys):
 
 
 def mhd2stl():
-    # QString imageName = "E:\\data\\medicaldata\\esdata\\tianming\\";
+    # QString imageName = "E:/data/medicaldata/esdata/tianming/";
     # QString fileName = "CTA20170410_LIUSHIFANG_4.stl";
     # int value = 4;
     # vtkSmartPointer<vtkMetaImageReader> reader = vtkSmartPointer<vtkMetaImageReader>::New();
@@ -58,8 +58,8 @@ def mhd2stl():
     # stlWriter->Write();
     # return 0;
 
-    imageName = "F:\\data\\esdata\\yanli\\LIU YONG QIONG_tm\\LIU YONG QIONG_tm\\LIU YONG QIONG\\LIU YONG QIONG\\LH_10_grayvalues_from_txt.mhd"
-    fileName = "F:\\data\\esdata\\yanli\\LIU YONG QIONG_tm\\LIU YONG QIONG_tm\\LIU YONG QIONG\\LIU YONG QIONG\\LH_10_grayvalues_from_txt.stl"
+    imageName = "F:/data/esdata/yanli/LIU YONG QIONG_tm/LIU YONG QIONG_tm/LIU YONG QIONG/LIU YONG QIONG/LH_10_grayvalues_from_txt.mhd"
+    fileName = "F:/data/esdata/yanli/LIU YONG QIONG_tm/LIU YONG QIONG_tm/LIU YONG QIONG/LIU YONG QIONG/LH_10_grayvalues_from_txt.stl"
     value = 255
     reader = vtk.vtkMetaImageReader()
     reader.SetFileName(imageName)
@@ -126,13 +126,14 @@ def poly2vol(stlFileName, mhdFileName, dim, spacing, origin):
     pass
 
 
-def mask2vol():
+def mask2vol_single():
     tic = time.time()
 
     filename = "LH_10_grayvalues"
-    mask_path = "F:\\data\\esdata\\yanli\\LIU YONG QIONG_tm\\LIU YONG QIONG_tm\\LIU YONG QIONG\\LIU YONG QIONG\\{}.txt".format(filename)
-    output_path = "F:\\data\\esdata\\yanli\\LIU YONG QIONG_tm\\LIU YONG QIONG_tm\\LIU YONG QIONG\\LIU YONG QIONG\\"
-    mhd_info_path = "F:\\data\\esdata\\yanli\\LIU YONG QIONG_tm\\LIU YONG QIONG_tm\\LIU YONG QIONG\\LIU YONG QIONG\\origin.mhd"
+    mask_path = "F:/data/esdata/yanli/LIU YONG QIONG_tm/LIU YONG QIONG_tm/LIU YONG QIONG/LIU YONG QIONG/{}.txt".format(
+        filename)
+    output_path = "F:/data/esdata/yanli/LIU YONG QIONG_tm/LIU YONG QIONG_tm/LIU YONG QIONG/LIU YONG QIONG/"
+    mhd_info_path = "F:/data/esdata/yanli/LIU YONG QIONG_tm/LIU YONG QIONG_tm/LIU YONG QIONG/LIU YONG QIONG/origin.mhd"
     keys = ["Offset", "ElementSpacing", "DimSize"]
     mhd_infos = getMhdMeta(mhd_info_path, keys)
 
@@ -176,9 +177,16 @@ def mask2vol():
 
 def run():
     # poly2vol
-    stlFileName = "F:\\data\\esdata\\yanli\\LIU YONG QIONG_tm\\LIU YONG QIONG_tm\\LIU YONG QIONG\\LIU YONG QIONG\\_LH_10_001.stl"
-    mhdFileName = "F:\\data\\esdata\\yanli\\LIU YONG QIONG_tm\\LIU YONG QIONG_tm\\LIU YONG QIONG\\LIU YONG QIONG\\_LH_10_001.mhd"
-    mhd_info_path = "F:\\data\\esdata\\yanli\\LIU YONG QIONG_tm\\LIU YONG QIONG_tm\\LIU YONG QIONG\\LIU YONG QIONG\\origin.mhd"
+    # stlFileName = "F:/data/esdata/yanli/LIU YONG QIONG_tm/LIU YONG QIONG_tm/LIU YONG QIONG/LIU YONG QIONG/_LH_10_001.stl"
+    # mhdFileName = "F:/data/esdata/yanli/LIU YONG QIONG_tm/LIU YONG QIONG_tm/LIU YONG QIONG/LIU YONG QIONG/_LH_10_001.mhd"
+    # mhd_info_path = "F:/data/esdata/yanli/LIU YONG QIONG_tm/LIU YONG QIONG_tm/LIU YONG QIONG/LIU YONG QIONG/origin.mhd"
+
+    stlFileName = "C:/Users/admin/Downloads/surfaces.stl"
+    mhdFileName = "C:/Users/admin/Downloads/surfaces_xbai.mhd"
+    mhd_info_path = "C:/Users/admin/Downloads/surfaces.mhd"
+
+
+
     keys = ["Offset", "ElementSpacing", "DimSize"]
     mhd_infos = getMhdMeta(mhd_info_path, keys)
 
@@ -191,13 +199,13 @@ def run():
         [mhd_infos["DimSize"][0], mhd_infos["DimSize"][1], mhd_infos["DimSize"][2]],
         dtype=np.int).tolist()
 
-    # poly2vol(stlFileName, mhdFileName, Dims, ElementSpacing, Offset)
+    poly2vol(stlFileName, mhdFileName, Dims, ElementSpacing, Offset)
 
     # mhd2stl
-    mhd2stl()
+    # mhd2stl()
 
     # mask2vol
-    # mask2vol()
+    # mask2vol_single()
 
     pass
 
